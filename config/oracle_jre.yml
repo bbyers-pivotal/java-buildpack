@@ -21,17 +21,17 @@
 ---
 jre:
   version: 1.8.0_+
-  repository_root: "http://ec2-52-90-30-129.compute-1.amazonaws.com/"
+  repository_root: ''
 memory_calculator:
-  version: 2.+
-  repository_root: ! '{default.repository.root}/memory-calculator/{platform}/{architecture}'
-  stack_threads:
+  version: 2.0.2_RELEASE
+  repository_root: '{default.repository.root}/memory-calculator/{platform}/{architecture}'
+  stack_threads: 
   memory_sizes:
-    heap:
+    heap: 
     metaspace: 64m..
-    native:
+    native: 
     permgen: 64m..
-    stack:
+    stack: 
   memory_heuristics:
     heap: 75
     metaspace: 10
