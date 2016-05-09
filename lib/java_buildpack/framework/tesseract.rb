@@ -57,7 +57,8 @@ module JavaBuildpack
       protected
 
       def tesseract_path
-        "#{qualify_path(@droplet.sandbox, @droplet.root)}"
+        # "#{qualify_path(@droplet.sandbox, @droplet.root)}"
+        "#{@droplet.root + @droplet.sandbox}"
       end
 
       def supports?
