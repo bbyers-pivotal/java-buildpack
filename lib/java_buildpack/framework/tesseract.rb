@@ -16,6 +16,7 @@
 
 require 'java_buildpack/component/versioned_dependency_component'
 require 'java_buildpack/framework'
+require 'java_buildpack/util/qualify_path'
 
 module JavaBuildpack
   module Framework
