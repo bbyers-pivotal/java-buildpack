@@ -42,9 +42,9 @@ module JavaBuildpack
       def release
         #print @droplet.sandbox
 
-        @droplet.environment_variables.add_environment_variable 'PATH', "@tesseract_path/:$PATH"
-        @droplet.environment_variables.add_environment_variable 'LD_LIBRARY_PATH', "@tesseract_path/libs:$LD_LIBRARY_PATH"
-        @droplet.environment_variables.add_environment_variable 'TESSEARCT_DATA_PATH', "@tesseract_path/tesseract-ocr"
+        @droplet.environment_variables.add_environment_variable 'PATH', "#{@tesseract_path}/:$PATH"
+        @droplet.environment_variables.add_environment_variable 'LD_LIBRARY_PATH', "#{@tesseract_path}/libs:$LD_LIBRARY_PATH"
+        @droplet.environment_variables.add_environment_variable 'TESSEARCT_DATA_PATH', "#{@tesseract_path}/tesseract-ocr"
 
         # @droplet.environment_variables.add_environment_variable 'PATH', "/home/vcap/app/.java-buildpack/tesseract/:$PATH"
         # @droplet.environment_variables.add_environment_variable 'LD_LIBRARY_PATH', "/home/vcap/app/.java-buildpack/tesseract/libs:$LD_LIBRARY_PATH"
