@@ -24,41 +24,24 @@ module JavaBuildpack
     class Tesseract < JavaBuildpack::Component::VersionedDependencyComponent
       include JavaBuildpack::Util
 
-      #def detect
-      #  true
-      #end
-
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
         download_tar
         @droplet.copy_resources
-        # with_timing "Expanding Tesseract OCR" do
-          
-          # shell "mkdir #{@droplet.sandbox}/vendor"
-          # shell "tar xzf #{@droplet.sandbox}/tesseract-archive.tar.gz -C #{@droplet.sandbox}/vendor --strip-components=1 2>&1"
-          # shell "rm #{@droplet.sandbox}/tesseract-archive.tar.gz"
-        # end
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
-        #print @droplet.sandbox
-
         @droplet.environment_variables.add_environment_variable 'PATH', "#{tesseract_path}/:$PATH"
         @droplet.environment_variables.add_environment_variable 'LD_LIBRARY_PATH', "#{tesseract_path}/libs:$LD_LIBRARY_PATH"
         @droplet.environment_variables.add_environment_variable 'TESSEARCT_DATA_PATH', "#{tesseract_path}/tesseract-ocr"
 
-        # @droplet.environment_variables.add_environment_variable 'PATH', "/home/vcap/app/.java-buildpack/tesseract/:$PATH"
-        # @droplet.environment_variables.add_environment_variable 'LD_LIBRARY_PATH', "/home/vcap/app/.java-buildpack/tesseract/libs:$LD_LIBRARY_PATH"
-        # @droplet.environment_variables.add_environment_variable 'TESSEARCT_DATA_PATH', "/home/vcap/app/.java-buildpack/tesseract/tesseract-ocr"
-        
       end
 
       protected
 
       def tesseract_path
         "#{qualify_path(@droplet.sandbox, @droplet.root)}"
-        # "#{@droplet.root + @droplet.sandbox}"
       end
 
       def supports?
